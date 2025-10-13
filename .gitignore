@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# File OS
+.DS_Store
+Thumbs.db
+
+# File IDE/Editor
+.vscode/
+.idea/
+
+# File sensitif
+.env
