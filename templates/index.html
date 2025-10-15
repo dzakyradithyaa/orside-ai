@@ -34,6 +34,10 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/night-mode.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/disease.css') }}"
+    />
   </head>
   <body>
     <!-- Progress Bar -->
@@ -42,7 +46,7 @@
     <!-- Header -->
     <header id="header">
       <div
-        class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between"
+        class="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between"
       >
         <div class="logo">
           <img
@@ -52,9 +56,10 @@
           />
         </div>
 
-        <nav class="hidden md:flex items-center gap-8">
+        <nav class="nav-linking hidden md:flex items-center gap-8">
           <a href="#hero" class="nav-link">Beranda</a>
           <a href="#analyzer" class="nav-link">AI Analyzer</a>
+          <a href="#oral-disease-showcase" class="nav-link">Kenali Penyakit</a>
         </nav>
         <!-- mode -->
         <div class="hidden md:flex items-center gap-4">
@@ -87,6 +92,9 @@
     <div class="mobile-menu" id="mobileMenu">
       <a href="#hero" onclick="toggleMenu()">Beranda</a>
       <a href="#analyzer" onclick="toggleMenu()">AI Analyzer</a>
+      <a href="#oral-disease-showcase" onclick="toggleMenu()"
+        >Kenali Penyakit</a
+      >
 
       <div class="mobile-theme-switch-container">
         <span class="theme-switch-label">Mode Gelap</span>
@@ -373,13 +381,171 @@
       </div>
     </section>
 
+    <!-- Disease Section -->
+    <section id="oral-disease-showcase">
+      <div class="oral-disease__intro-container">
+        <h2 class="oral-disease__main-title">Kenali Penyakit Rongga Mulut</h2>
+        <p class="oral-disease__subtitle">
+          Mulut sehat adalah awal dari tubuh yang sehat. Kenali berbagai
+          kelainan yang dapat muncul agar Anda bisa mengambil tindakan lebih
+          cepat.
+        </p>
+      </div>
+
+      <div class="oral-disease__pin-wrapper">
+        <div class="oral-disease__horizontal-track">
+          <div class="oral-disease__card-item">
+            <div class="oral-disease__card-image-container">
+              <img
+                src="{{ url_for('static', filename='img/disease/kanker-mulut.png') }}"
+                alt="Ilustrasi Kanker Mulut"
+                class="oral-disease__card-image"
+              />
+            </div>
+            <div class="oral-disease__card-content">
+              <div class="oral-disease__card-title-row">
+                <h3 class="oral-disease__card-title">Kanker Mulut</h3>
+                <span class="oral-disease__card-icon-arrow">&rarr;</span>
+              </div>
+              <p class="oral-disease__card-desc">
+                Penyakit ketika sel di mulut tumbuh ganas. Sering disebabkan
+                oleh rokok, alkohol, atau iritasi kronis.
+              </p>
+            </div>
+          </div>
+
+          <div class="oral-disease__card-item">
+            <div class="oral-disease__card-image-container">
+              <img
+                src="{{ url_for('static', filename='img/disease/leukoplakia.png') }}"
+                alt="Ilustrasi Leukoplakia"
+                class="oral-disease__card-image"
+              />
+            </div>
+            <div class="oral-disease__card-content">
+              <div class="oral-disease__card-title-row">
+                <h3 class="oral-disease__card-title">Leukoplakia</h3>
+                <span class="oral-disease__card-icon-arrow">&rarr;</span>
+              </div>
+              <p class="oral-disease__card-desc">
+                Bercak putih tebal yang tidak bisa dihapus, berpotensi menjadi
+                awal dari kanker jika tidak diawasi.
+              </p>
+            </div>
+          </div>
+
+          <div class="oral-disease__card-item">
+            <div class="oral-disease__card-image-container">
+              <img
+                src="{{ url_for('static', filename='img/disease/eritroplakia.png') }}"
+                alt="Ilustrasi Eritroplakia"
+                class="oral-disease__card-image"
+              />
+            </div>
+            <div class="oral-disease__card-content">
+              <div class="oral-disease__card-title-row">
+                <h3 class="oral-disease__card-title">Eritroplakia</h3>
+                <span class="oral-disease__card-icon-arrow">&rarr;</span>
+              </div>
+              <p class="oral-disease__card-desc">
+                Bercak merah terang yang jarang muncul, namun memiliki risiko
+                keganasan lebih tinggi dari leukoplakia.
+              </p>
+            </div>
+          </div>
+
+          <div class="oral-disease__card-item">
+            <div class="oral-disease__card-image-container">
+              <img
+                src="{{ url_for('static', filename='img/disease/eritroleukoplakia.png') }}"
+                alt="Ilustrasi Eritroleukoplakia"
+                class="oral-disease__card-image"
+              />
+            </div>
+            <div class="oral-disease__card-content">
+              <div class="oral-disease__card-title-row">
+                <h3 class="oral-disease__card-title">Eritroleukoplakia</h3>
+                <span class="oral-disease__card-icon-arrow">&rarr;</span>
+              </div>
+              <p class="oral-disease__card-desc">
+                Gabungan bercak merah dan putih, menandakan perubahan jaringan
+                yang lebih serius dan perlu diwaspadai.
+              </p>
+            </div>
+          </div>
+
+          <div class="oral-disease__card-item">
+            <div class="oral-disease__card-image-container">
+              <img
+                src="{{ url_for('static', filename='img/disease/lichen-planus.png') }}"
+                alt="Ilustrasi Oral Lichen Planus"
+                class="oral-disease__card-image"
+              />
+            </div>
+            <div class="oral-disease__card-content">
+              <div class="oral-disease__card-title-row">
+                <h3 class="oral-disease__card-title">Oral Lichen Planus</h3>
+                <span class="oral-disease__card-icon-arrow">&rarr;</span>
+              </div>
+              <p class="oral-disease__card-desc">
+                Peradangan kronis akibat reaksi imun, tampak seperti jaring
+                putih yang terkadang terasa perih.
+              </p>
+            </div>
+          </div>
+
+          <div class="oral-disease__card-item">
+            <div class="oral-disease__card-image-container">
+              <img
+                src="{{ url_for('static', filename='img/disease/fibrosis.png') }}"
+                alt="Ilustrasi Oral Submucous Fibrosis"
+                class="oral-disease__card-image"
+              />
+            </div>
+            <div class="oral-disease__card-content">
+              <div class="oral-disease__card-title-row">
+                <h3 class="oral-disease__card-title">
+                  Oral Submucous Fibrosis
+                </h3>
+                <span class="oral-disease__card-icon-arrow">&rarr;</span>
+              </div>
+              <p class="oral-disease__card-desc">
+                Penebalan jaringan yang membuat mulut kaku, sering disebabkan
+                oleh kebiasaan mengunyah pinang.
+              </p>
+            </div>
+          </div>
+
+          <div class="oral-disease__card-item">
+            <div class="oral-disease__card-image-container">
+              <img
+                src="{{ url_for('static', filename='img/disease/lesi-lain.png') }}"
+                alt="Ilustrasi Lesi Mulut Lain"
+                class="oral-disease__card-image"
+              />
+            </div>
+            <div class="oral-disease__card-content">
+              <div class="oral-disease__card-title-row">
+                <h3 class="oral-disease__card-title">Lesi Mulut Lain</h3>
+                <span class="oral-disease__card-icon-arrow">&rarr;</span>
+              </div>
+              <p class="oral-disease__card-desc">
+                Termasuk sariawan, jamur, atau benjolan kecil. Umumnya tidak
+                berbahaya namun perlu dicek jika tidak sembuh.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer>
       <div class="max-w-7xl mx-auto px-6">
         <hr class="footer-divider" />
 
         <div class="footer-content">
-          <a href="#" class="footer-logo">
+          <a href="#hero" class="footer-logo">
             <img
               src="/static/img/orside-logo.png"
               alt="Orside Logo"
@@ -409,10 +575,28 @@
       </div>
     </footer>
 
+    <!-- Bring To Up Button -->
+    <button id="scrollToTopBtn" title="Kembali ke atas">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4.5 15.75l7.5-7.5 7.5 7.5"
+        />
+      </svg>
+    </button>
+
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/concept.js') }}"></script>
     <script src="{{ url_for('static', filename='js/analyzerAi.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/disease.js') }}"></script>
   </body>
 </html>

@@ -34,11 +34,11 @@ body.night-mode .social-btn {
 }
 
 body.night-mode .social-btn:hover {
-  border-color: var(--primary);
+  border-color: var(--secondary);
 }
 
 body.night-mode .footer-copyright p {
-  color: #64748b;
+  color: #94a3b8;
 }
 
 body.night-mode p[style*="#64748b"] {
@@ -320,4 +320,26 @@ body.night-mode .mobile-theme-switch-container {
 
 body.night-mode .theme-switch-label {
   color: var(--text);
+}
+
+body.night-mode .oral-disease__subtitle {
+  color: #cbd5e1;
+}
+
+body.night-mode .oral-disease__card-image-container {
+  background-color: var(--bg);
+}
+
+body.night-mode .oral-disease__card-content {
+  background-color: var(--card-bg);
+}
+
+body.night-mode .oral-disease__card-desc {
+  color: #94a3b8;
+}
+
+body.night-mode .oral-disease__card-item {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }

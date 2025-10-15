@@ -80,23 +80,43 @@ window.addEventListener("scroll", () => {
 });
 
 function initThemeToggle() {
-  const themeToggles = document.querySelectorAll(".theme-toggle-input");
+  const toggles = document.querySelectorAll(".theme-toggle-input");
   const body = document.body;
 
   const applyTheme = (theme) => {
-    const isNight = theme === "night";
-    body.classList.toggle("night-mode", isNight);
-    themeToggles.forEach((toggle) => (toggle.checked = isNight));
+    const night = theme === "night";
+    body.classList.toggle("night-mode", night);
+    toggles.forEach((t) => (t.checked = night));
   };
 
-  const savedTheme = localStorage.getItem("theme") || "light";
-  applyTheme(savedTheme);
+  const saved = localStorage.getItem("theme") || "light";
+  applyTheme(saved);
 
-  themeToggles.forEach((toggle) => {
-    toggle.addEventListener("change", () => {
-      const newTheme = toggle.checked ? "night" : "light";
+  toggles.forEach((t) => {
+    t.addEventListener("change", () => {
+      const newTheme = t.checked ? "night" : "light";
       localStorage.setItem("theme", newTheme);
       applyTheme(newTheme);
     });
   });
 }
+
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+if (scrollToTopBtn) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      scrollToTopBtn.classList.add("visible");
+    } else {
+      scrollToTopBtn.classList.remove("visible");
+    }
+  });
+
+  scrollToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", initThemeToggle);
