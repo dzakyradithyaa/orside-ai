@@ -123,33 +123,51 @@ async function analyzeImage() {
   const predictions = [
     {
       label: "Leukoplakia",
-      probability: 0.68,
+      probability: 0.85,
       icon: "fa-exclamation-triangle",
       severity: "Perhatian",
     },
     {
       label: "Mukosa Normal",
-      probability: 0.18,
+      probability: 0.06,
       icon: "fa-check-circle",
       severity: "Normal",
     },
     {
       label: "Eritroplakia",
-      probability: 0.09,
+      probability: 0.03,
       icon: "fa-exclamation-circle",
       severity: "Tinggi",
     },
     {
-      label: "Kanker",
-      probability: 0.03,
+      label: "Kanker Mulut",
+      probability: 0.02,
       icon: "fa-biohazard",
       severity: "Kritis",
     },
     {
-      label: "Lainnya",
-      probability: 0.02,
+      label: "Eritroleukoplakia",
+      probability: 0.015,
+      icon: "fa-exclamation-triangle",
+      severity: "Perhatian Tinggi",
+    },
+    {
+      label: "Oral Lichen Planus",
+      probability: 0.01,
+      icon: "fa-notes-medical",
+      severity: "Perhatian",
+    },
+    {
+      label: "Oral Submucous Fibrosis",
+      probability: 0.003,
+      icon: "fa-file-medical",
+      severity: "Perhatian",
+    },
+    {
+      label: "Lesi Mulut Lain",
+      probability: 0.002,
       icon: "fa-question-circle",
-      severity: "Tidak Diketahui",
+      severity: "Perlu Evaluasi",
     },
   ];
 

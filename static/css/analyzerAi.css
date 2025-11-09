@@ -130,11 +130,14 @@
 
 /* Upload Card with 3D effect */
 .upload-card {
-  position: sticky;
-  top: 100px; /* jarak dari atas */
+  /* REMOVED STICKY - Prevents overlap with disease section */
+  position: relative;
+  /* position: sticky; */
+  /* top: 100px; */
   align-self: start;
-  max-height: calc(100vh - 140px); /* biar muat di layar */
-  overflow-y: auto; /* bikin bagian dalam card bisa discroll */
+  /* ADDED: Same max-height as results card */
+  max-height: calc(100vh - 200px);
+  overflow-y: auto; /* Add scrollbar if content is long */
   scrollbar-width: thin;
   scrollbar-color: var(--primary) rgba(0, 0, 0, 0.05);
 
@@ -149,7 +152,35 @@
   transform: translateX(-100px) rotateY(-15deg);
 }
 
+/* Custom scrollbar styling for webkit browsers */
+.upload-card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.upload-card::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.upload-card::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.upload-card::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
 .results-card {
+  /* SAME SIZE AS UPLOAD CARD */
+  position: relative;
+  align-self: start;
+  max-height: calc(100vh - 200px); /* Limit height like upload card */
+  overflow-y: auto; /* Add scrollbar when content is long */
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) rgba(0, 0, 0, 0.05);
+
   background: white;
   backdrop-filter: blur(20px);
   border-radius: 30px;
@@ -159,6 +190,26 @@
   transform-style: preserve-3d;
   opacity: 0;
   transform: translateX(100px) rotateY(15deg);
+}
+
+/* Custom scrollbar styling for webkit browsers */
+.results-card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.results-card::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.results-card::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.results-card::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
 }
 
 .card-header {
@@ -486,85 +537,78 @@
   font-size: 1.1rem;
 }
 
-/* == MODIFICATION START: Professional Results Display == */
-
-/* Ganti kode CSS ini */
+/* == COMPACT PROFESSIONAL RESULTS DESIGN == */
 
 .result-main {
   background: var(--bg);
   border: 2px solid var(--border-light);
-  border-radius: 30px;
-  /* DIKURANGI: Padding dari 40px */
-  padding: 30px;
+  border-radius: 20px;
+  padding: 20px 24px;
   text-align: center;
-  /* DIKURANGI: Margin dari 40px */
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   position: relative;
 }
 
 .severity-badge {
   display: inline-block;
-  padding: 10px 24px;
+  padding: 6px 16px;
   background: rgba(139, 92, 246, 0.1);
   border: 1px solid rgba(139, 92, 246, 0.2);
   color: var(--primary);
   border-radius: 50px;
   font-weight: 700;
-  /* DIKURANGI: Margin dari 20px */
-  margin-bottom: 15px;
-}
-
-.result-label {
-  /* DIKURANGI: Ukuran font dari 2rem */
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--text);
-  /* DIKURANGI: Margin dari 15px */
+  font-size: 0.85rem;
   margin-bottom: 10px;
 }
 
+.result-label {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
 .result-percentage {
-  /* DIKURANGI: Ukuran font dari 4.5rem */
-  font-size: 3.5rem;
+  font-size: 2.8rem;
   font-weight: 900;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin: 5px 0 10px 0; /* Jarak atas-bawah disesuaikan */
-  line-height: 1.1;
+  margin: 2px 0 6px 0;
+  line-height: 1;
 }
 
 .confidence-text {
   color: #64748b;
-  font-weight: 600; /* Adjusted font-weight */
-  font-size: 1rem; /* Adjusted font-size */
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
-/* Prediction Items */
+/* Prediction Items - Compact Design */
 .predictions-list {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .predictions-title {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 1.3rem;
-  font-weight: 900;
+  gap: 8px;
+  font-size: 1.1rem;
+  font-weight: 800;
   color: var(--text);
-  margin-bottom: 20px; /* Adjusted margin */
-  padding-bottom: 15px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
   border-bottom: 2px solid var(--border-light);
 }
 
 .prediction-item {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 16px 10px; /* Adjusted padding */
-  border-bottom: 2px solid var(--border-light);
+  gap: 12px;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--border-light);
   transition: background-color 0.3s ease;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .prediction-item:last-child {
@@ -576,45 +620,47 @@
 }
 
 .prediction-icon {
-  width: 45px; /* Adjusted size */
-  height: 45px; /* Adjusted size */
-  border-radius: 15px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem; /* Adjusted size */
+  font-size: 1.1rem;
   flex-shrink: 0;
-  /* Harmonized colors */
   background: rgba(139, 92, 246, 0.1);
   color: var(--primary);
 }
 
 .prediction-content {
   flex: 1;
+  min-width: 0;
 }
 
 .prediction-label {
-  font-weight: 700; /* Adjusted font-weight */
+  font-weight: 700;
   color: var(--text);
-  margin-bottom: 10px;
-  font-size: 1rem; /* Adjusted font-size */
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .prediction-bar-bg {
-  height: 10px; /* Adjusted height */
+  height: 6px;
   background: var(--border-light);
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
   position: relative;
 }
 
 .prediction-bar-fill {
   height: 100%;
-  border-radius: 10px;
+  border-radius: 6px;
   transition: width 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   position: relative;
   overflow: hidden;
-  /* Harmonized color */
   background: var(--primary);
 }
 
@@ -643,11 +689,11 @@
 
 .prediction-value {
   font-weight: 700;
-  /* Reduced font size */
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   flex-shrink: 0;
-  /* Harmonized color */
   color: var(--text);
+  min-width: 42px;
+  text-align: right;
 }
 
 /* Style for the top prediction item */
@@ -657,37 +703,38 @@
   font-weight: 800;
 }
 
-/* == MODIFICATION END == */
+/* == COMPACT DESIGN END == */
 
-/* Disclaimer */
+/* Disclaimer - Compact */
 .disclaimer {
   background: rgba(59, 130, 246, 0.08);
   border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 25px;
-  padding: 30px;
+  border-radius: 16px;
+  padding: 16px 20px;
   display: flex;
   align-items: start;
-  gap: 20px;
+  gap: 12px;
 }
 
 .disclaimer-icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #3b82f6;
   flex-shrink: 0;
-  margin-top: 5px;
+  margin-top: 2px;
 }
 
 .disclaimer-title {
-  font-weight: 900;
+  font-weight: 800;
   color: #1e40af;
-  margin-bottom: 12px;
-  font-size: 1.2rem;
+  margin-bottom: 6px;
+  font-size: 1rem;
 }
 
 .disclaimer-text {
   color: #475569;
-  line-height: 1.8;
-  font-weight: 600;
+  line-height: 1.5;
+  font-weight: 500;
+  font-size: 0.85rem;
 }
 
 /* Responsive */
@@ -704,6 +751,8 @@
   .upload-card,
   .results-card {
     transform: none !important;
+    /* Maintain scrollable cards on tablet */
+    max-height: 70vh;
   }
 }
 
@@ -744,6 +793,9 @@
     padding: 25px 20px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15);
+    /* Remove max-height on mobile - let content flow naturally */
+    max-height: none;
+    overflow-y: visible;
   }
 
   .card-header {
@@ -798,76 +850,81 @@
     border-radius: 15px;
   }
 
-  /* Results */
+  /* Results - Mobile Compact */
   .result-main {
-    /* DIKURANGI: Padding dari 30px 20px */
-    padding: 25px 20px;
-    border-radius: 20px;
-    margin-bottom: 30px;
+    padding: 16px 18px;
+    border-radius: 16px;
+    margin-bottom: 16px;
   }
 
   .severity-badge {
-    padding: 6px 16px;
-    font-size: 0.9rem;
+    padding: 5px 14px;
+    font-size: 0.8rem;
   }
 
   .result-label {
-    /* DIKURANGI: Ukuran font dari 1.6rem */
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   .result-percentage {
-    /* DIKURANGI: Ukuran font dari 2.8rem */
-    font-size: 2.5rem;
-  }
-  .confidence-text {
-    font-size: 0.9rem;
+    font-size: 2.2rem;
   }
 
-  /* Predictions */
+  .confidence-text {
+    font-size: 0.85rem;
+  }
+
+  /* Predictions - Mobile Compact */
   .predictions-title {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
   }
 
   .prediction-item {
-    padding: 14px 0;
-    gap: 14px;
+    padding: 8px 4px;
+    gap: 10px;
   }
 
   .prediction-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
-
-  .prediction-label {
-    font-size: 0.9rem;
-  }
-
-  .prediction-value {
-    font-size: 0.95rem;
-  }
-
-  /* Disclaimer */
-  .disclaimer {
-    padding: 20px;
-    border-radius: 15px;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .disclaimer-icon {
-    font-size: 1.5rem;
-  }
-
-  .disclaimer-title {
+    width: 32px;
+    height: 32px;
     font-size: 1rem;
   }
 
-  .disclaimer-text {
+  .prediction-label {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+  }
+
+  .prediction-bar-bg {
+    height: 5px;
+  }
+
+  .prediction-value {
+    font-size: 0.85rem;
+    min-width: 38px;
+  }
+
+  /* Disclaimer - Mobile Compact */
+  .disclaimer {
+    padding: 14px 16px;
+    border-radius: 12px;
+    gap: 10px;
+  }
+
+  .disclaimer-icon {
+    font-size: 1.3rem;
+  }
+
+  .disclaimer-title {
     font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+
+  .disclaimer-text {
+    font-size: 0.8rem;
+    line-height: 1.4;
   }
 
   /* Loading Section */
